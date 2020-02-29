@@ -34,4 +34,3 @@ exports.diceSideConfig = (_a = {},
         enums_1.EArmadaDiceSide.SINGLE_HIT
     ],
     _a);
-exports.default = config;
