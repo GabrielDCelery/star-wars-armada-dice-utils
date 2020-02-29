@@ -37,5 +37,3 @@ export const diceSideConfig: DiceSideConfigs = {
     EArmadaDiceSide.SINGLE_HIT
   ]
 };
-
-export default config;
