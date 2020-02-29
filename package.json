@@ -1,0 +1,19 @@
+{
+  "name": "star-wars-armada-dice-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "node ./node_modules/.bin/tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel D. Celery (admin@gabrielzeller.co.uk)",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^13.7.7"
+  }
+}
