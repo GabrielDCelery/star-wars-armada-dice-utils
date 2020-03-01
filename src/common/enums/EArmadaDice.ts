@@ -1,5 +1,5 @@
 export enum EArmadaDice {
-  RED_DICE = 'red',
-  BLUE_DICE = 'blue',
-  BLACK_DICE = 'black'
+  RED_DICE = 'RED_DICE',
+  BLUE_DICE = 'BLUE_DICE',
+  BLACK_DICE = 'BLACK_DICE'
 }

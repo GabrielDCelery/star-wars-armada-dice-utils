@@ -1,4 +1,5 @@
 export interface IProcessLogger {
+  setIsEnabled(isEnabled: boolean): this;
   setTotalNumOfProcessableItems(totalNumOfItems: number | string): this;
   printMessage(message: string): void;
   printPercentage(processedNumOfItems: number): void;
@@ -7,10 +8,18 @@ export interface IProcessLogger {
 export class UProcessLogger implements IProcessLogger {
   private lastCachedPercentage: number;
   private totalNumOfItems: number;
+  private isEnabled: boolean;
 
-  constructor() {
+  constructor({ isEnabled }: { isEnabled: boolean }) {
     this.lastCachedPercentage = 0;
     this.totalNumOfItems = 0;
+    this.isEnabled = isEnabled;
+  }
+
+  setIsEnabled(isEnabled: boolean) {
+    this.isEnabled = isEnabled;
+
+    return this;
   }
 
   setTotalNumOfProcessableItems(totalNumOfItems: number | string) {
@@ -23,10 +32,18 @@ export class UProcessLogger implements IProcessLogger {
   }
 
   printMessage(message: string) {
+    if (!this.isEnabled) {
+      return;
+    }
+
     process.stdout.write(`${message}\r\n"`);
   }
 
   printPercentage(processedNumOfItems: number) {
+    if (!this.isEnabled) {
+      return;
+    }
+
     const currentPercentage = Math.floor(
       (processedNumOfItems / this.totalNumOfItems) * 100
     );

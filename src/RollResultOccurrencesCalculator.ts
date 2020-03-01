@@ -31,8 +31,10 @@ interface IRollResultOccurrencesCalculator {
 
 class RollResultOccurrencesCalculator
   implements IRollResultOccurrencesCalculator {
-  static createInstance() {
-    return new RollResultOccurrencesCalculator();
+  private isLoggingEnabled: boolean;
+
+  constructor({ isLoggingEnabled }: { isLoggingEnabled: boolean }) {
+    this.isLoggingEnabled = isLoggingEnabled;
   }
 
   _createArrayOfType(type: EArmadaDice, numOfDices: number): EArmadaDice[] {
@@ -105,7 +107,9 @@ class RollResultOccurrencesCalculator
   }
 
   calculate(red: number, blue: number, black: number) {
-    const processLogger = new UProcessLogger();
+    const processLogger = new UProcessLogger({
+      isEnabled: this.isLoggingEnabled
+    });
     const rollResultHasher: URollResultHasher = new URollResultHasher();
     const diceArray: EArmadaDice[] = this._convertDicePoolToFlatArray(
       red,

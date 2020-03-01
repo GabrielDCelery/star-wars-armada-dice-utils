@@ -6,14 +6,15 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "node ./node_modules/.bin/tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run build && node ./node_modules/.bin/mocha"
   },
   "author": "Gabriel D. Celery (admin@gabrielzeller.co.uk)",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^13.7.7",
+    "chai": "^4.2.0",
+    "mocha": "^7.1.0",
     "typescript": "^3.8.3"
   },
-  "dependencies": {
-    "@types/node": "^13.7.7"
-  }
+  "dependencies": {}
 }

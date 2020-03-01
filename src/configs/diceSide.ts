@@ -1,11 +1,11 @@
 import { EArmadaDice, EArmadaDiceSide } from '../common/enums';
 import { TArmadaDiceSides } from '../common/types';
 
-export type DiceSideConfigs = {
+export type DiceSideConfig = {
   [key in EArmadaDice]: TArmadaDiceSides;
 };
 
-export const diceSideConfig: DiceSideConfigs = {
+export const diceSideConfig: DiceSideConfig = {
   [EArmadaDice.BLACK_DICE]: [
     EArmadaDiceSide.BLANK,
     EArmadaDiceSide.BLANK,

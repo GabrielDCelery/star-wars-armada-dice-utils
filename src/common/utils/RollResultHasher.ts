@@ -1,18 +1,27 @@
 import { EArmadaDiceSide } from '../enums';
+import {
+  diceSideEnumToNumericConfig,
+  diceSideNumericToEnumConfig
+} from '../../configs';
 
 export interface IRollResultHasher {
-  convertHashToRollResults(hash: string): EArmadaDiceSide[];
+  convertHashToRollResult(hash: string): EArmadaDiceSide[];
   convertRollResultToHash(rollResult: EArmadaDiceSide[]): string;
 }
 
 export class URollResultHasher implements IRollResultHasher {
-  convertHashToRollResults(hash: string) {
-    return hash.split('').map(rollResultStr => {
-      return parseInt(rollResultStr, 10);
+  convertHashToRollResult(rollResultHash: string) {
+    return rollResultHash.split('').map(diceSide => {
+      return diceSideNumericToEnumConfig[parseInt(diceSide, 10)];
     });
   }
 
   convertRollResultToHash(rollResult: EArmadaDiceSide[]) {
-    return rollResult.sort().join('');
+    return rollResult
+      .map(diceSide => {
+        return diceSideEnumToNumericConfig[diceSide];
+      })
+      .sort()
+      .join('');
   }
 }
