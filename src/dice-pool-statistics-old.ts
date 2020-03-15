@@ -1,7 +1,7 @@
 import {
   calculateDicePoolRollResultCombinations,
   IDicePoolRollResultCombinations,
-} from './dice-pool-roll-combinations';
+} from './dice-pool-roll-combinations-old';
 import { convertHashToRollResult } from './roll-result-hasher';
 import { diceDamageShipConfig } from './configs';
 import { EArmadaDiceSide, EArmadaDefenseTokens } from './common';

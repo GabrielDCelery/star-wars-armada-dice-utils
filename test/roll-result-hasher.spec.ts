@@ -1,7 +1,11 @@
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { convertHashToRollResult, convertRollResultToHash } from '../src/roll-result-hasher';
-import { EArmadaDiceSide } from '../src/common';
+import {
+  convertHashToRollResult,
+  convertRollResultToHash,
+  appendDiceSideToGroupedRollResultHash,
+} from '../src/roll-result-hasher';
+import { EArmadaDice, EArmadaDiceSide } from '../src/common';
 
 describe('roll result hasher', () => {
   it('converts single hashes correctly to roll results', () => {
@@ -31,5 +35,15 @@ describe('roll result hasher', () => {
     expect(convertRollResultToHash([EArmadaDiceSide.ACCURACY])).to.deep.equal('3');
     expect(convertRollResultToHash([EArmadaDiceSide.CRITICAL])).to.deep.equal('4');
     expect(convertRollResultToHash([EArmadaDiceSide.CRITICAL_AND_SINGLE_HIT])).to.deep.equal('5');
+  });
+
+  it('appends dice side to grouped roll result hash', () => {
+    expect(
+      appendDiceSideToGroupedRollResultHash({
+        hash: '__',
+        dice: EArmadaDice.RED_DICE,
+        diceSide: EArmadaDiceSide.SINGLE_HIT,
+      })
+    ).to.deep.equal('1__');
   });
 });

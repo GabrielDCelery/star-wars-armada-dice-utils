@@ -1,6 +1,6 @@
 import { TRollResultCounts, EArmadaDice, EArmadaDiceSide } from './common';
-import { diceRollSideCountsConfig, diceSideEnumToNumericConfig } from './configs';
-import { convertHashToNumerics, convertNumericsToHash } from './roll-result-hasher';
+import { diceRollSideCountsConfig } from './configs';
+import { appendDiceSideToGroupedRollResultHash } from './roll-result-hasher';
 
 export interface IDicePoolRollResultCombinations {
   total: number;
@@ -17,13 +17,12 @@ const appendDiceToRollResultCounts = (
   const diceSides = Object.keys(diceRollSideCountsConfig[dice]) as EArmadaDiceSide[];
 
   rollResultHashes.forEach(rollResultHash => {
-    const previousDiceSidesAsNumerics = convertHashToNumerics(rollResultHash);
-
     diceSides.forEach(diceSide => {
-      const combinedRollResultHash = convertNumericsToHash([
-        ...previousDiceSidesAsNumerics,
-        diceSideEnumToNumericConfig[diceSide],
-      ]);
+      const combinedRollResultHash = appendDiceSideToGroupedRollResultHash({
+        hash: rollResultHash,
+        dice,
+        diceSide,
+      });
 
       if (newCounts[combinedRollResultHash] === undefined) {
         newCounts[combinedRollResultHash] = 0;
@@ -53,7 +52,7 @@ export const calculateDicePoolRollResultCombinations = ({
 }): IDicePoolRollResultCombinations => {
   let dicePoolRollResultCombinations: IDicePoolRollResultCombinations = {
     total: 0,
-    counts: { '': 1 },
+    counts: { __: 1 },
   };
 
   for (let i = 0, iMax = red; i < iMax; i++) {
