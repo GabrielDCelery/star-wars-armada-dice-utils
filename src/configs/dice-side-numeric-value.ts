@@ -10,7 +10,7 @@ export const diceSideEnumToNumericConfig: DiceSideEnumToNumericConfig = {
   [EArmadaDiceSide.DOUBLE_HIT]: 2,
   [EArmadaDiceSide.ACCURACY]: 3,
   [EArmadaDiceSide.CRITICAL]: 4,
-  [EArmadaDiceSide.CRITICAL_AND_SINGLE_HIT]: 5
+  [EArmadaDiceSide.CRITICAL_AND_SINGLE_HIT]: 5,
 };
 
 export const diceSideNumericToEnumConfig: EArmadaDiceSide[] = [
@@ -19,5 +19,5 @@ export const diceSideNumericToEnumConfig: EArmadaDiceSide[] = [
   EArmadaDiceSide.DOUBLE_HIT,
   EArmadaDiceSide.ACCURACY,
   EArmadaDiceSide.CRITICAL,
-  EArmadaDiceSide.CRITICAL_AND_SINGLE_HIT
+  EArmadaDiceSide.CRITICAL_AND_SINGLE_HIT,
 ];

@@ -1,3 +1,4 @@
-export * from './diceDamage';
-export * from './diceSide';
-export * from './diceSideNumericValue';
+export * from './dice-damage';
+export * from './dice-sides';
+export * from './dice-side-numeric-value';
+export * from './dice-roll-counts';

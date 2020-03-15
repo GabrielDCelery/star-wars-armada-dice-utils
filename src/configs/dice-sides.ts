@@ -1,11 +1,10 @@
-import { EArmadaDice, EArmadaDiceSide } from '../common/enums';
-import { TArmadaDiceSides } from '../common/types';
+import { EArmadaDice, EArmadaDiceSide, TArmadaDiceSides } from '../common';
 
 export type DiceSideConfig = {
   [key in EArmadaDice]: TArmadaDiceSides;
 };
 
-export const diceSideConfig: DiceSideConfig = {
+export const diceSidesConfig: DiceSideConfig = {
   [EArmadaDice.BLACK_DICE]: [
     EArmadaDiceSide.BLANK,
     EArmadaDiceSide.BLANK,
@@ -14,7 +13,7 @@ export const diceSideConfig: DiceSideConfig = {
     EArmadaDiceSide.SINGLE_HIT,
     EArmadaDiceSide.SINGLE_HIT,
     EArmadaDiceSide.SINGLE_HIT,
-    EArmadaDiceSide.SINGLE_HIT
+    EArmadaDiceSide.SINGLE_HIT,
   ],
   [EArmadaDice.BLUE_DICE]: [
     EArmadaDiceSide.ACCURACY,
@@ -24,7 +23,7 @@ export const diceSideConfig: DiceSideConfig = {
     EArmadaDiceSide.SINGLE_HIT,
     EArmadaDiceSide.SINGLE_HIT,
     EArmadaDiceSide.SINGLE_HIT,
-    EArmadaDiceSide.SINGLE_HIT
+    EArmadaDiceSide.SINGLE_HIT,
   ],
   [EArmadaDice.RED_DICE]: [
     EArmadaDiceSide.ACCURACY,
@@ -34,6 +33,6 @@ export const diceSideConfig: DiceSideConfig = {
     EArmadaDiceSide.CRITICAL,
     EArmadaDiceSide.DOUBLE_HIT,
     EArmadaDiceSide.SINGLE_HIT,
-    EArmadaDiceSide.SINGLE_HIT
-  ]
+    EArmadaDiceSide.SINGLE_HIT,
+  ],
 };
